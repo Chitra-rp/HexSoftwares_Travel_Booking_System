@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Booking System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Travel Booking System</h1>
+            <p>Book flights, hotels, and transportation for your next trip</p>
+        </header>
+
+        <nav class="tabs">
+            <button class="tab-btn active" onclick="showTab('flights')">Flights</button>
+            <button class="tab-btn" onclick="showTab('hotels')">Hotels</button>
+            <button class="tab-btn" onclick="showTab('transportation')">Transportation</button>
+            <button class="tab-btn" onclick="showTab('bookings')">My Bookings</button>
+        </nav>
+
+        <div id="flights" class="tab-content active">
+            <h2>Search Flights</h2>
+            <div class="search-form">
+                <input type="text" id="flightOrigin" placeholder="Origin (e.g., New York)">
+                <input type="text" id="flightDestination" placeholder="Destination (e.g., Los Angeles)">
+                <button onclick="searchFlights()">Search</button>
+                <button onclick="loadAllFlights()">Show All</button>
+            </div>
+            <div id="flightResults" class="results"></div>
+        </div>
+
+        <div id="hotels" class="tab-content">
+            <h2>Search Hotels</h2>
+            <div class="search-form">
+                <input type="text" id="hotelLocation" placeholder="Location (e.g., New York)">
+                <input type="number" id="hotelStars" placeholder="Min Stars (1-5)" min="1" max="5">
+                <button onclick="searchHotels()">Search</button>
+                <button onclick="loadAllHotels()">Show All</button>
+            </div>
+            <div id="hotelResults" class="results"></div>
+        </div>
+
+        <div id="transportation" class="tab-content">
+            <h2>Search Transportation</h2>
+            <div class="search-form">
+                <input type="text" id="transportLocation" placeholder="Location (e.g., New York)">
+                <select id="transportType">
+                    <option value="">All Types</option>
+                    <option value="Car Rental">Car Rental</option>
+                    <option value="SUV Rental">SUV Rental</option>
+                    <option value="Luxury Car">Luxury Car</option>
+                    <option value="Van Rental">Van Rental</option>
+                    <option value="Airport Shuttle">Airport Shuttle</option>
+                    <option value="Scooter Rental">Scooter Rental</option>
+                </select>
+                <button onclick="searchTransportation()">Search</button>
+                <button onclick="loadAllTransportation()">Show All</button>
+            </div>
+            <div id="transportResults" class="results"></div>
+        </div>
+
+        <div id="bookings" class="tab-content">
+            <h2>My Bookings</h2>
+            <div class="search-form">
+                <input type="text" id="customerEmail" placeholder="Enter your email">
+                <button onclick="loadMyBookings()">View My Bookings</button>
+            </div>
+            <div class="search-form">
+                <input type="text" id="bookingRef" placeholder="Booking Reference (e.g., BK12345678)">
+                <button onclick="searchBookingByRef()">Search Booking</button>
+            </div>
+            <div id="bookingResults" class="results"></div>
+        </div>
+
+        <div id="bookingModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeBookingModal()">&times;</span>
+                <h2>Complete Your Booking</h2>
+                <div id="bookingDetails"></div>
+                <form id="bookingForm">
+                    <input type="text" id="bookingName" placeholder="Full Name" required>
+                    <input type="email" id="bookingEmail" placeholder="Email" required>
+                    <button type="submit">Confirm Booking</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="confirmationModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeConfirmationModal()">&times;</span>
+                <h2>Booking Confirmed!</h2>
+                <div id="confirmationDetails"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
